@@ -297,6 +297,10 @@ class SparkContext(
     setLocalProperty(SparkContext.SPARK_JOB_GROUP_ID, groupId)
   }
 
+  def setClassLoader(replClassLoader: String) {
+    setLocalProperty(SparkContext.SPARK_JOB_CLASS_LOADER, replClassLoader)
+  }
+
   /** Clear the current thread's job group ID and its description. */
   def clearJobGroup() {
     setLocalProperty(SparkContext.SPARK_JOB_DESCRIPTION, null)
@@ -1030,6 +1034,8 @@ object SparkContext {
   private[spark] val SPARK_JOB_DESCRIPTION = "spark.job.description"
 
   private[spark] val SPARK_JOB_GROUP_ID = "spark.jobGroup.id"
+
+  private[spark] val SPARK_JOB_CLASS_LOADER = "spark.classloader"
 
   private[spark] val SPARK_UNKNOWN_USER = "<unknown>"
 
